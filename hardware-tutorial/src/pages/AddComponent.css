@@ -1,0 +1,79 @@
+.add-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+.add-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.form-card {
+  width: 550px;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.form-card h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.form-card > p {
+  color: #71809a;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.form-card input,
+.form-card textarea {
+  border: 1px solid #d9e4f0;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 18px;
+  outline: none;
+}
+
+.form-card textarea {
+  height: 100px;
+  resize: none;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-button {
+  border: 1px solid #cbd8e7;
+  color: #53657e;
+  padding: 11px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.form-buttons button {
+  border: none;
+  background: #1465e8;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
