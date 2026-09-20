@@ -1,0 +1,267 @@
+.details-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+
+.details-content {
+  padding: 60px;
+}
+
+
+/* ==========================================
+   COMPONENT CARD
+   ========================================== */
+
+.details-card {
+  max-width: 850px;
+  margin: auto;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 35px;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+
+/* ==========================================
+   COMPONENT IMAGE
+   ========================================== */
+
+.details-image {
+  width: 200px;
+  height: 180px;
+  background: #edf5ff;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 70px;
+
+  flex-shrink: 0;
+}
+
+
+/* ==========================================
+   COMPONENT INFORMATION
+   ========================================== */
+
+.details-info {
+  flex: 1;
+}
+
+
+.details-info h1 {
+  font-size: 25px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+
+.details-info p {
+  color: #71809a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* ==========================================
+   TINKERCAD SECTION
+   ========================================== */
+
+.tinkercad-section {
+  margin-top: 25px;
+  padding: 18px;
+  background: #f7fbff;
+  border: 1px solid #e1ebf5;
+  border-radius: 7px;
+}
+
+
+.tinkercad-section h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+
+.tinkercad-section p {
+  margin: 0 0 12px;
+  font-size: 12px;
+}
+
+
+.tinkercad-button {
+  display: inline-block;
+  background: #1465e8;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+
+.tinkercad-button:hover {
+  opacity: 0.9;
+}
+
+
+/* ==========================================
+   TUTORIAL SECTION
+   ========================================== */
+
+.tutorial-section {
+  max-width: 850px;
+  margin: 25px auto 0;
+}
+
+
+.tutorial-section h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+
+.tutorial-card {
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+.tutorial-card h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+
+.tutorial-card p {
+  margin: 0;
+  color: #71809a;
+  font-size: 12px;
+}
+
+
+.tutorial-card-content {
+  flex: 1;
+}
+
+
+.watch-tutorial-button {
+  background: #1465e8;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+
+.watch-tutorial-button:hover {
+  opacity: 0.9;
+}
+
+
+/* ==========================================
+   QR SECTION
+   ========================================== */
+
+.qr-box {
+  text-align: center;
+  min-width: 130px;
+}
+
+
+.qr-box h3 {
+  font-size: 14px;
+  margin-top: 0;
+}
+
+
+.qr-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+}
+
+
+.qr-box button {
+  border: none;
+  background: #1465e8;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+
+/* ==========================================
+   ERROR
+   ========================================== */
+
+.error-message {
+  color: #d93025;
+  text-align: center;
+  padding: 30px;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 800px) {
+
+  .details-content {
+    padding: 30px 20px;
+  }
+
+
+  .details-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 25px;
+  }
+
+
+  .details-image {
+    width: 100%;
+    height: 150px;
+  }
+
+
+  .qr-box {
+    margin-top: 20px;
+  }
+
+
+  .tutorial-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+
+  .watch-tutorial-button {
+    text-align: center;
+  }
+
+}

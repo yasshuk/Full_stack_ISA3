@@ -1,0 +1,66 @@
+.tutorial-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+.tutorial-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.tutorial-card {
+  width: 700px;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.tutorial-card h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.tutorial-card > p {
+  color: #71809a;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.video-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.video-container iframe {
+  border-radius: 6px;
+}
+
+.tutorial-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.watch-button {
+  background: #1465e8;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.back-button {
+  border: 1px solid #cbd8e7;
+  color: #53657e;
+  padding: 11px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.error-message {
+  color: #d93025;
+}

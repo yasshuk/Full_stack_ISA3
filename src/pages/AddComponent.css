@@ -1,0 +1,241 @@
+.add-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+.add-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.form-card {
+  width: 550px;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.form-card h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.form-card > p {
+  color: #71809a;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.form-card input,
+.form-card textarea {
+  border: 1px solid #d9e4f0;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 18px;
+  outline: none;
+}
+
+.form-card textarea {
+  height: 100px;
+  resize: none;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-button {
+  border: 1px solid #cbd8e7;
+  color: #53657e;
+  padding: 11px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.form-buttons button {
+  border: none;
+  background: #1465e8;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.add-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+.add-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.form-card {
+  width: 550px;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.form-card h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.form-card > p {
+  color: #71809a;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.form-card input,
+.form-card textarea {
+  border: 1px solid #d9e4f0;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 18px;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-color: #1465e8;
+}
+
+.form-card textarea {
+  height: 100px;
+  resize: none;
+}
+
+
+/* ==========================================
+   TUTORIALS
+   ========================================== */
+
+.tutorial-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tutorial-item {
+  border: 1px solid #e1ebf5;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #fbfdff;
+}
+
+.tutorial-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tutorial-heading label {
+  margin-bottom: 7px;
+}
+
+.tutorial-item input {
+  width: 100%;
+}
+
+.remove-button {
+  border: none;
+  background: transparent;
+  color: #d64545;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-button:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================
+   ADD TUTORIAL BUTTON
+   ========================================== */
+
+.add-tutorial-button {
+  align-self: flex-start;
+  border: 1px solid #cbd8e7;
+  background: white;
+  color: #1465e8;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.add-tutorial-button:hover {
+  background: #f7fbff;
+}
+
+
+/* ==========================================
+   FORM BUTTONS
+   ========================================== */
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-button {
+  border: 1px solid #cbd8e7;
+  color: #53657e;
+  padding: 11px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.form-buttons button {
+  border: none;
+  background: #1465e8;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-buttons button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
