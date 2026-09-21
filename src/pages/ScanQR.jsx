@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import "./ScanQR.css";
 import { apiRequest } from "../services/api";
+import Footer from "../components/Footer";
 
 function ScanQR() {
 
@@ -420,6 +421,7 @@ function ScanQR() {
             Back to Components
           </Link>
 
+  <Footer />
 
         </div>
 

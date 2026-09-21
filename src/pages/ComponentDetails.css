@@ -1,267 +1,611 @@
+* {
+  box-sizing: border-box;
+}
+
 .details-page {
   min-height: 100vh;
-  background: #f7fbff;
+  display: flex;
+  background: #f5f9fe;
+  color: #102a56;
 }
 
+/* ==========================================
+   MAIN AREA
+========================================== */
+
+.details-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
 
 /* ==========================================
-   MAIN CONTENT
-   ========================================== */
+   HEADER
+========================================== */
+
+.details-header {
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2ebf5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 35px;
+}
+
+.details-brand {
+  color: #102a56;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.back-components {
+  text-decoration: none;
+  color: #1465e8;
+  background: #edf5ff;
+
+  padding: 9px 15px;
+  border-radius: 7px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.back-components:hover {
+  background: #e1edff;
+}
+
+/* ==========================================
+   CONTENT
+========================================== */
 
 .details-content {
-  padding: 60px;
+  flex: 1;
+  padding: 30px 35px;
+  width: 100%;
 }
 
-
 /* ==========================================
-   COMPONENT CARD
-   ========================================== */
+   MAIN GRID
+========================================== */
 
-.details-card {
-  max-width: 850px;
-  margin: auto;
-  background: white;
-  border: 1px solid #e1ebf5;
-  border-radius: 8px;
-  padding: 35px;
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
+.details-layout {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(350px, 1fr)
+    minmax(350px, 1fr)
+    220px;
+
+  gap: 20px;
+
+  align-items: start;
 }
 
-
 /* ==========================================
-   COMPONENT IMAGE
-   ========================================== */
+   COMPONENT INFORMATION
+========================================== */
+
+.component-info-card {
+  background: #ffffff;
+  border: 1px solid #e0eaf5;
+  border-radius: 12px;
+
+  padding: 25px;
+
+  min-height: 390px;
+}
 
 .details-image {
-  width: 200px;
+  width: 100%;
   height: 180px;
+
   background: #edf5ff;
-  border-radius: 8px;
+  border-radius: 10px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 70px;
+  font-size: 75px;
 
-  flex-shrink: 0;
+  margin-bottom: 22px;
 }
 
+.component-label {
+  display: inline-block;
 
-/* ==========================================
-   COMPONENT INFORMATION
-   ========================================== */
+  background: #e8f1ff;
+  color: #1465e8;
 
-.details-info {
-  flex: 1;
+  padding: 6px 10px;
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  margin-bottom: 10px;
 }
-
 
 .details-info h1 {
-  font-size: 25px;
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-
-.details-info p {
-  color: #71809a;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-
-/* ==========================================
-   TINKERCAD SECTION
-   ========================================== */
-
-.tinkercad-section {
-  margin-top: 25px;
-  padding: 18px;
-  background: #f7fbff;
-  border: 1px solid #e1ebf5;
-  border-radius: 7px;
-}
-
-
-.tinkercad-section h3 {
-  margin: 0 0 8px;
-  font-size: 15px;
-}
-
-
-.tinkercad-section p {
   margin: 0 0 12px;
-  font-size: 12px;
+
+  font-size: 25px;
+  line-height: 1.2;
 }
 
+.component-description {
+  color: #657892;
 
-.tinkercad-button {
-  display: inline-block;
-  background: #1465e8;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+
+  margin: 0 0 20px;
 }
-
-
-.tinkercad-button:hover {
-  opacity: 0.9;
-}
-
 
 /* ==========================================
-   TUTORIAL SECTION
-   ========================================== */
+   TINKERCAD BOX
+========================================== */
 
-.tutorial-section {
-  max-width: 850px;
-  margin: 25px auto 0;
-}
+.simulation-box {
+  background: #edf5ff;
 
+  border-radius: 9px;
 
-.tutorial-section h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-
-.tutorial-card {
-  background: white;
-  border: 1px solid #e1ebf5;
-  border-radius: 8px;
-  padding: 18px;
-  margin-bottom: 12px;
+  padding: 13px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
 }
 
+.simulation-icon {
+  width: 35px;
+  height: 35px;
 
-.tutorial-card h3 {
-  margin: 0 0 6px;
-  font-size: 15px;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.simulation-box strong {
+  display: block;
 
-.tutorial-card p {
-  margin: 0;
-  color: #71809a;
   font-size: 12px;
+  color: #102a56;
 }
 
+.simulation-box span {
+  display: block;
 
-.tutorial-card-content {
-  flex: 1;
+  font-size: 10px;
+  color: #71809a;
+
+  margin-top: 3px;
 }
 
+.tinkercad-button {
+  width: 100%;
 
-.watch-tutorial-button {
+  border: none;
+
   background: #1465e8;
   color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  text-decoration: none;
+
+  padding: 12px;
+
+  border-radius: 7px;
+
   font-size: 12px;
-  white-space: nowrap;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
 }
 
-
-.watch-tutorial-button:hover {
-  opacity: 0.9;
+.tinkercad-button:hover {
+  background: #0f56c9;
 }
-
 
 /* ==========================================
-   QR SECTION
-   ========================================== */
+   TUTORIALS
+========================================== */
 
-.qr-box {
-  text-align: center;
-  min-width: 130px;
+.tutorial-section {
+  background: #ffffff;
+
+  border: 1px solid #e0eaf5;
+  border-radius: 12px;
+
+  padding: 25px;
 }
 
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-.qr-box h3 {
-  font-size: 14px;
-  margin-top: 0;
+  margin-bottom: 18px;
 }
 
+.section-heading h2 {
+  margin: 0;
 
-.qr-image {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin: 10px auto;
-  display: block;
+  font-size: 20px;
 }
 
+.section-heading p {
+  margin: 5px 0 0;
 
-.qr-box button {
-  border: none;
-  background: #1465e8;
-  color: white;
-  padding: 11px 18px;
-  border-radius: 5px;
-  cursor: pointer;
+  color: #71809a;
   font-size: 11px;
 }
 
+.tutorial-count {
+  background: #edf5ff;
+  color: #1465e8;
 
-/* ==========================================
-   ERROR
-   ========================================== */
+  padding: 6px 9px;
 
-.error-message {
-  color: #d93025;
-  text-align: center;
-  padding: 30px;
+  border-radius: 15px;
+
+  font-size: 10px;
+  font-weight: 600;
 }
 
+/* Tutorial Card */
+
+.tutorial-card {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  border: 1px solid #e2ebf5;
+  border-radius: 9px;
+
+  padding: 15px;
+
+  margin-bottom: 12px;
+
+  transition: 0.2s;
+}
+
+.tutorial-card:hover {
+  border-color: #b9d2f5;
+
+  box-shadow:
+    0 5px 15px rgba(16, 42, 86, 0.06);
+}
+
+.tutorial-number {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 8px;
+
+  background: #edf5ff;
+  color: #1465e8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 16px;
+}
+
+.tutorial-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tutorial-card-content h3 {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.tutorial-card-content p {
+  margin: 4px 0 9px;
+
+  color: #7a8ba3;
+
+  font-size: 10px;
+}
+
+.watch-tutorial-button {
+  border: none;
+
+  background: #1465e8;
+  color: white;
+
+  padding: 8px 12px;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+
+  cursor: pointer;
+}
+
+.watch-tutorial-button:hover {
+  background: #0f56c9;
+}
+
+/* ==========================================
+   QR BOX
+========================================== */
+
+.qr-box {
+  background: #ffffff;
+
+  border: 1px solid #e0eaf5;
+  border-radius: 12px;
+
+  padding: 22px;
+
+  text-align: center;
+
+  position: sticky;
+  top: 20px;
+}
+
+.qr-icon {
+  width: 38px;
+  height: 38px;
+
+  margin: 0 auto 10px;
+
+  border-radius: 8px;
+
+  background: #edf5ff;
+  color: #1465e8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+.qr-box h3 {
+  margin: 0;
+
+  font-size: 14px;
+}
+
+.qr-box p {
+  color: #71809a;
+
+  font-size: 10px;
+  line-height: 1.5;
+
+  margin: 8px 0 15px;
+}
+
+.qr-image-container {
+  background: white;
+
+  border: 1px solid #e2ebf5;
+
+  border-radius: 7px;
+
+  padding: 10px;
+
+  width: 100%;
+}
+
+.qr-image {
+  width: 100%;
+  max-width: 160px;
+
+  display: block;
+
+  margin: auto;
+}
+
+.download-qr-button {
+  width: 100%;
+
+  border: none;
+
+  background: #1465e8;
+  color: white;
+
+  padding: 10px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  margin-top: 12px;
+
+  cursor: pointer;
+}
+
+.download-qr-button:hover {
+  background: #0f56c9;
+}
+
+/* ==========================================
+   LOADING / ERROR
+========================================== */
+
+.loading-card,
+.error-card {
+  max-width: 600px;
+  margin: 60px auto;
+
+  text-align: center;
+
+  padding: 50px;
+}
+
+.loading-icon,
+.error-icon {
+  width: 55px;
+  height: 55px;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: #edf5ff;
+  color: #1465e8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.error-card h2 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+}
+
+.error-message {
+  color: #dc2626;
+
+  font-size: 12px;
+}
+
+/* ==========================================
+   BACK BUTTON
+========================================== */
+
+.back-button {
+  display: inline-block;
+
+  background: #1465e8;
+  color: white;
+
+  text-decoration: none;
+
+  padding: 10px 15px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+}
+
+/* ==========================================
+   TUTORIAL MESSAGE
+========================================== */
+
+.tutorial-message {
+  padding: 25px;
+
+  text-align: center;
+
+  background: #f8fbff;
+
+  border-radius: 8px;
+
+  color: #71809a;
+
+  font-size: 12px;
+}
 
 /* ==========================================
    RESPONSIVE
-   ========================================== */
+========================================== */
+
+@media (max-width: 1050px) {
+
+  .details-layout {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .qr-box {
+    grid-column: 1 / -1;
+
+    position: static;
+
+    max-width: 300px;
+    width: 100%;
+
+    margin: 0 auto;
+  }
+
+}
 
 @media (max-width: 800px) {
 
   .details-content {
-    padding: 30px 20px;
+    padding: 20px;
   }
 
-
-  .details-card {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 25px;
+  .details-header {
+    padding: 0 20px;
   }
 
+  .details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .qr-box {
+    grid-column: auto;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .details-header {
+    height: 60px;
+  }
+
+  .details-brand {
+    font-size: 15px;
+  }
+
+  .back-components {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .component-info-card,
+  .tutorial-section {
+    padding: 18px;
+  }
 
   .details-image {
-    width: 100%;
     height: 150px;
   }
 
-
-  .qr-box {
-    margin-top: 20px;
+  .details-info h1 {
+    font-size: 21px;
   }
-
 
   .tutorial-card {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-
-  .watch-tutorial-button {
-    text-align: center;
+    align-items: flex-start;
   }
 
 }

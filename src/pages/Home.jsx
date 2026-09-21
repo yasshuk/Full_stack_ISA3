@@ -1,3 +1,5 @@
+import Footer from "../components/Footer";
+
 import { Link } from "react-router-dom";
 import "./Home.css";
 
@@ -75,6 +77,8 @@ function Home() {
         </div>
 
       </section>
+
+  <Footer />
 
     </div>
   );

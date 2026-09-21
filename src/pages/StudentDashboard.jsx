@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { apiRequest } from "../services/api";
+import Footer from "../components/Footer";
+
 
 function StudentDashboard() {
 
@@ -401,6 +403,7 @@ function StudentDashboard() {
           </div>
 
         )}
+  <Footer />
 
       </main>
 

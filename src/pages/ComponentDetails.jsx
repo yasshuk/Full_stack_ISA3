@@ -7,52 +7,42 @@ import {
 
 import "./ComponentDetails.css";
 import { apiRequest } from "../services/api";
-
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 function ComponentDetails() {
 
-  const [searchParams] =
-    useSearchParams();
+  const [searchParams] = useSearchParams();
 
-  const navigate =
-    useNavigate();
+  const navigate = useNavigate();
 
-  const componentId =
-    searchParams.get("id");
-
+  const componentId = searchParams.get("id");
 
   // ==========================================
   // COMPONENT STATE
   // ==========================================
 
-  const [component, setComponent] =
-    useState(null);
+  const [component, setComponent] = useState(null);
 
-  const [tutorials, setTutorials] =
-    useState([]);
-
+  const [tutorials, setTutorials] = useState([]);
 
   // ==========================================
-  // LOADING STATE
+  // LOADING
   // ==========================================
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [tutorialsLoading, setTutorialsLoading] =
     useState(true);
 
-
   // ==========================================
-  // ERROR STATE
+  // ERROR
   // ==========================================
 
-  const [error, setError] =
-    useState("");
+  const [error, setError] = useState("");
 
   const [tutorialError, setTutorialError] =
     useState("");
-
 
   // ==========================================
   // LOAD COMPONENT
@@ -64,28 +54,22 @@ function ComponentDetails() {
 
       if (!componentId) {
 
-        setError(
-          "Component ID is missing."
-        );
+        setError("Component ID is missing.");
 
         setLoading(false);
 
         return;
-
       }
-
 
       try {
 
         setLoading(true);
+
         setError("");
 
-
-        const data =
-          await apiRequest(
-            `/components/${componentId}`
-          );
-
+        const data = await apiRequest(
+          `/components/${componentId}`
+        );
 
         if (!data.component) {
 
@@ -95,10 +79,7 @@ function ComponentDetails() {
 
         }
 
-
-        setComponent(
-          data.component
-        );
+        setComponent(data.component);
 
       } catch (error) {
 
@@ -120,11 +101,9 @@ function ComponentDetails() {
 
     };
 
-
     loadComponent();
 
   }, [componentId]);
-
 
   // ==========================================
   // LOAD TUTORIALS
@@ -139,21 +118,17 @@ function ComponentDetails() {
         setTutorialsLoading(false);
 
         return;
-
       }
-
 
       try {
 
         setTutorialsLoading(true);
+
         setTutorialError("");
 
-
-        const data =
-          await apiRequest(
-            `/tutorials/component/${componentId}`
-          );
-
+        const data = await apiRequest(
+          `/tutorials/component/${componentId}`
+        );
 
         setTutorials(
           data.tutorials || []
@@ -179,11 +154,9 @@ function ComponentDetails() {
 
     };
 
-
     loadTutorials();
 
   }, [componentId]);
-
 
   // ==========================================
   // OPEN TINKERCAD
@@ -195,15 +168,12 @@ function ComponentDetails() {
       return;
     }
 
-
     window.open(
       component.tinkercad_url,
       "_blank",
       "noopener,noreferrer"
     );
-
   };
-
 
   // ==========================================
   // OPEN TUTORIAL
@@ -215,16 +185,13 @@ function ComponentDetails() {
       return;
     }
 
-
     navigate(
       `/tutorial/${tutorial.id}`
     );
-
   };
 
-
   // ==========================================
-  // DOWNLOAD COMPONENT QR
+  // DOWNLOAD QR
   // ==========================================
 
   const downloadQR = () => {
@@ -233,27 +200,19 @@ function ComponentDetails() {
       return;
     }
 
+    const link = document.createElement("a");
 
-    const link =
-      document.createElement("a");
-
-
-    link.href =
-      component.qr_code;
-
+    link.href = component.qr_code;
 
     link.download =
       `${component.name || "component"}-QR.png`;
-
 
     document.body.appendChild(link);
 
     link.click();
 
     document.body.removeChild(link);
-
   };
-
 
   // ==========================================
   // LOADING
@@ -265,36 +224,45 @@ function ComponentDetails() {
 
       <div className="details-page">
 
-        <header className="simple-header">
+        <Sidebar role="Student" />
 
-          <Link
-            to="/components"
-            className="brand"
-          >
-            ← HardwareHub
-          </Link>
+        <div className="details-main">
 
-        </header>
+          <header className="details-header">
 
+            <Link
+              to="/components"
+              className="details-brand"
+            >
+              ⚙ HardwareHub
+            </Link>
 
-        <main className="details-content">
+          </header>
 
-          <div className="details-card">
+          <main className="details-content">
 
-            <p>
-              Loading component...
-            </p>
+            <div className="details-card loading-card">
 
-          </div>
+              <div className="loading-icon">
+                🔧
+              </div>
 
-        </main>
+              <p>
+                Loading component...
+              </p>
+
+            </div>
+
+          </main>
+
+          <Footer />
+
+        </div>
 
       </div>
 
     );
-
   }
-
 
   // ==========================================
   // ERROR
@@ -306,44 +274,56 @@ function ComponentDetails() {
 
       <div className="details-page">
 
-        <header className="simple-header">
+        <Sidebar role="Student" />
 
-          <Link
-            to="/components"
-            className="brand"
-          >
-            ← HardwareHub
-          </Link>
+        <div className="details-main">
 
-        </header>
-
-
-        <main className="details-content">
-
-          <div className="details-card">
-
-            <p className="error-message">
-              {error}
-            </p>
-
+          <header className="details-header">
 
             <Link
               to="/components"
-              className="back-button"
+              className="details-brand"
             >
-              Back to Components
+              ⚙ HardwareHub
             </Link>
 
-          </div>
+          </header>
 
-        </main>
+          <main className="details-content">
+
+            <div className="details-card error-card">
+
+              <div className="error-icon">
+                !
+              </div>
+
+              <h2>
+                Something went wrong
+              </h2>
+
+              <p className="error-message">
+                {error}
+              </p>
+
+              <Link
+                to="/components"
+                className="back-button"
+              >
+                ← Back to Components
+              </Link>
+
+            </div>
+
+          </main>
+
+          <Footer />
+
+        </div>
 
       </div>
 
     );
-
   }
-
 
   // ==========================================
   // COMPONENT NOT FOUND
@@ -355,44 +335,55 @@ function ComponentDetails() {
 
       <div className="details-page">
 
-        <header className="simple-header">
+        <Sidebar role="Student" />
 
-          <Link
-            to="/components"
-            className="brand"
-          >
-            ← HardwareHub
-          </Link>
+        <div className="details-main">
 
-        </header>
-
-
-        <main className="details-content">
-
-          <div className="details-card">
-
-            <p>
-              Component not found.
-            </p>
-
+          <header className="details-header">
 
             <Link
               to="/components"
-              className="back-button"
+              className="details-brand"
             >
-              Back to Components
+              ⚙ HardwareHub
             </Link>
+          </header>
 
-          </div>
+          <main className="details-content">
 
-        </main>
+            <div className="details-card error-card">
+
+              <div className="error-icon">
+                ?
+              </div>
+
+              <h2>
+                Component not found
+              </h2>
+
+              <p>
+                The requested component could not be found.
+              </p>
+
+              <Link
+                to="/components"
+                className="back-button"
+              >
+                ← Back to Components
+              </Link>
+
+            </div>
+
+          </main>
+
+          <Footer />
+
+        </div>
 
       </div>
 
     );
-
   }
-
 
   // ==========================================
   // MAIN PAGE
@@ -402,134 +393,163 @@ function ComponentDetails() {
 
     <div className="details-page">
 
-      {/* ======================================
-          HEADER
-          ====================================== */}
+      {/* SIDEBAR */}
 
-      <header className="simple-header">
+      <Sidebar role="Student" />
 
-        <Link
-          to="/components"
-          className="brand"
-        >
-          ← HardwareHub
-        </Link>
+      {/* MAIN AREA */}
 
-      </header>
+      <div className="details-main">
 
+        {/* HEADER */}
 
-      {/* ======================================
-          MAIN CONTENT
-          ====================================== */}
+        <header className="details-header">
 
-      <main className="details-content">
+          <Link
+            to="/components"
+            className="details-brand"
+          >
+            ⚙ HardwareHub
+          </Link>
 
-        <div className="details-card">
+          <Link
+            to="/components"
+            className="back-components"
+          >
+            ← Back to Components
+          </Link>
 
+        </header>
 
-          {/* ==================================
-              COMPONENT ICON
-              ================================== */}
+        {/* CONTENT */}
 
-          <div className="details-image">
-            🔵
-          </div>
+        <main className="details-content">
 
+          <div className="details-layout">
 
-          {/* ==================================
-              COMPONENT INFORMATION
-              ================================== */}
+            {/* COMPONENT INFORMATION */}
 
-          <div className="details-info">
+            <section className="component-info-card">
 
-            <h1>
-              {component.name}
-            </h1>
+              <div className="details-image">
+                🔵
+              </div>
 
+              <div className="details-info">
 
-            <p>
-              {component.description ||
-                "No description available."}
-            </p>
+                <span className="component-label">
+                  Hardware Component
+                </span>
 
+                <h1>
+                  {component.name}
+                </h1>
 
-            {/* ==================================
-                TINKERCAD
-                ================================== */}
-
-            {component.tinkercad_url && (
-
-              <button
-                type="button"
-                onClick={openTinkercad}
-                className="tinkercad-button"
-              >
-                🛠 Open Tinkercad Simulation
-              </button>
-
-            )}
-
-          </div>
-
-
-          {/* ==================================
-              TUTORIALS
-              ================================== */}
-
-          <div className="tutorial-section">
-
-            <h2>
-              Tutorials
-            </h2>
-
-
-            {/* LOADING */}
-
-            {tutorialsLoading && (
-
-              <p>
-                Loading tutorials...
-              </p>
-
-            )}
-
-
-            {/* ERROR */}
-
-            {!tutorialsLoading &&
-              tutorialError && (
-
-                <p className="error-message">
-                  {tutorialError}
+                <p className="component-description">
+                  {component.description ||
+                    "No description available."}
                 </p>
 
-            )}
+                {component.tinkercad_url && (
 
+                  <div className="simulation-box">
 
-            {/* NO TUTORIALS */}
+                    <div className="simulation-icon">
+                      🧪
+                    </div>
 
-            {!tutorialsLoading &&
-              !tutorialError &&
-              tutorials.length === 0 && (
+                    <div>
+                      <strong>
+                        Tinkercad Simulation
+                      </strong>
 
-                <p>
-                  No tutorials available.
-                </p>
+                      <span>
+                        Simulation available for this component
+                      </span>
+                    </div>
 
-            )}
+                  </div>
 
+                )}
 
-            {/* TUTORIAL LIST */}
+                {component.tinkercad_url && (
 
-            {!tutorialsLoading &&
-              !tutorialError &&
-              tutorials.map(
-                (tutorial) => (
+                  <button
+                    type="button"
+                    onClick={openTinkercad}
+                    className="tinkercad-button"
+                  >
+                    🛠 Open Tinkercad Simulation
+                  </button>
+
+                )}
+
+              </div>
+
+            </section>
+
+            {/* TUTORIALS */}
+
+            <section className="tutorial-section">
+
+              <div className="section-heading">
+
+                <div>
+                  <h2>
+                    Tutorials
+                  </h2>
+
+                  <p>
+                    Learn how to use this component.
+                  </p>
+                </div>
+
+                <span className="tutorial-count">
+                  {tutorials.length} Tutorial
+                  {tutorials.length !== 1 ? "s" : ""}
+                </span>
+
+              </div>
+
+              {tutorialsLoading && (
+
+                <div className="tutorial-message">
+                  Loading tutorials...
+                </div>
+
+              )}
+
+              {!tutorialsLoading &&
+                tutorialError && (
+
+                  <p className="error-message">
+                    {tutorialError}
+                  </p>
+
+                )}
+
+              {!tutorialsLoading &&
+                !tutorialError &&
+                tutorials.length === 0 && (
+
+                  <div className="tutorial-message">
+                    No tutorials available.
+                  </div>
+
+                )}
+
+              {!tutorialsLoading &&
+                !tutorialError &&
+                tutorials.map((tutorial) => (
 
                   <div
                     className="tutorial-card"
                     key={tutorial.id}
                   >
+
+                    <div className="tutorial-number">
+                      ▶
+                    </div>
 
                     <div className="tutorial-card-content">
 
@@ -537,13 +557,14 @@ function ComponentDetails() {
                         {tutorial.title}
                       </h3>
 
+                      <p>
+                        YouTube Tutorial
+                      </p>
 
                       <button
                         type="button"
                         onClick={() =>
-                          openTutorial(
-                            tutorial
-                          )
+                          openTutorial(tutorial)
                         }
                         className="watch-tutorial-button"
                       >
@@ -554,67 +575,73 @@ function ComponentDetails() {
 
                   </div>
 
-                )
-              )}
+                ))}
 
-          </div>
+            </section>
 
+            {/* QR CODE */}
 
-          {/* ==================================
-              COMPONENT QR CODE
-              ================================== */}
+            <aside className="qr-box">
 
-          <div className="qr-box">
+              <div className="qr-icon">
+                ▣
+              </div>
 
-            <h3>
-              Component QR Code
-            </h3>
-
-
-            {component.qr_code ? (
-
-              <>
-
-                <img
-                  src={
-                    component.qr_code
-                  }
-                  alt={
-                    `QR Code for ${component.name}`
-                  }
-                  className="qr-image"
-                />
-
-
-                <button
-                  type="button"
-                  onClick={downloadQR}
-                >
-                  Download QR
-                </button>
-
-              </>
-
-            ) : (
+              <h3>
+                Component QR Code
+              </h3>
 
               <p>
-                QR code not available.
+                Scan or download this QR code
+                to access the component.
               </p>
 
-            )}
+              {component.qr_code ? (
+
+                <>
+                  <div className="qr-image-container">
+
+                    <img
+                      src={component.qr_code}
+                      alt={`QR Code for ${component.name}`}
+                      className="qr-image"
+                    />
+
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={downloadQR}
+                    className="download-qr-button"
+                  >
+                    ↓ Download QR
+                  </button>
+
+                </>
+
+              ) : (
+
+                <p>
+                  QR code not available.
+                </p>
+
+              )}
+
+            </aside>
 
           </div>
 
+        </main>
 
-        </div>
+        {/* FOOTER */}
 
-      </main>
+        <Footer />
+
+      </div>
 
     </div>
 
   );
-
 }
-
 
 export default ComponentDetails;

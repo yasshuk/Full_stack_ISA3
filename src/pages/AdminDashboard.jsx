@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import { apiRequest } from "../services/api";
-
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 function AdminDashboard() {
 
@@ -640,6 +641,7 @@ function AdminDashboard() {
 
         </div>
 
+    <Footer />
       </main>
 
     </div>

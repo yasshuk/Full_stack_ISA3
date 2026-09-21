@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./AddComponent.css";
 import { apiRequest } from "../services/api";
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 function AddComponent() {
-
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -21,18 +22,13 @@ function AddComponent() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   // ==========================================
   // VALIDATE YOUTUBE URL
   // ==========================================
 
   const isValidYoutubeUrl = (url) => {
-
     try {
-
-      const parsedUrl = new URL(
-        url.trim()
-      );
+      const parsedUrl = new URL(url.trim());
 
       const allowedHosts = [
         "youtube.com",
@@ -44,56 +40,34 @@ function AddComponent() {
       return allowedHosts.includes(
         parsedUrl.hostname.toLowerCase()
       );
-
     } catch (error) {
-
       return false;
-
     }
-
   };
-
 
   // ==========================================
   // VALIDATE TINKERCAD URL
   // ==========================================
 
   const isValidTinkercadUrl = (url) => {
-
     try {
-
-      const parsedUrl = new URL(
-        url.trim()
-      );
+      const parsedUrl = new URL(url.trim());
 
       return parsedUrl.hostname
         .toLowerCase()
         .includes("tinkercad.com");
-
     } catch (error) {
-
       return false;
-
     }
-
   };
-
 
   // ==========================================
   // HANDLE TUTORIAL CHANGE
   // ==========================================
 
-  const handleTutorialChange = (
-    index,
-    field,
-    value
-  ) => {
-
+  const handleTutorialChange = (index, field, value) => {
     setTutorials((currentTutorials) => {
-
-      const updatedTutorials = [
-        ...currentTutorials
-      ];
+      const updatedTutorials = [...currentTutorials];
 
       updatedTutorials[index] = {
         ...updatedTutorials[index],
@@ -101,263 +75,126 @@ function AddComponent() {
       };
 
       return updatedTutorials;
-
     });
-
   };
-
 
   // ==========================================
   // ADD TUTORIAL
   // ==========================================
 
   const addTutorial = () => {
-
     setTutorials((currentTutorials) => [
-
       ...currentTutorials,
-
       {
         title: "",
         youtube_url: ""
       }
-
     ]);
-
   };
-
 
   // ==========================================
   // REMOVE TUTORIAL
   // ==========================================
 
   const removeTutorial = (index) => {
-
     setTutorials((currentTutorials) => {
-
       if (currentTutorials.length === 1) {
-
         return currentTutorials;
-
       }
 
       return currentTutorials.filter(
-        (_, tutorialIndex) =>
-          tutorialIndex !== index
+        (_, tutorialIndex) => tutorialIndex !== index
       );
-
     });
-
   };
-
 
   // ==========================================
   // VALIDATE FORM
   // ==========================================
 
   const validateForm = () => {
-
-    const trimmedName =
-      name.trim();
-
-    const trimmedTinkercadUrl =
-      tinkercad_url.trim();
-
-
-    // ------------------------------------------
-    // COMPONENT NAME
-    // ------------------------------------------
+    const trimmedName = name.trim();
+    const trimmedTinkercadUrl = tinkercad_url.trim();
 
     if (!trimmedName) {
-
       return "Component name is required.";
-
     }
-
 
     if (trimmedName.length < 2) {
-
-      return (
-        "Component name must contain at least 2 characters."
-      );
-
+      return "Component name must contain at least 2 characters.";
     }
-
-
-    // ------------------------------------------
-    // TINKERCAD URL
-    // ------------------------------------------
 
     if (!trimmedTinkercadUrl) {
-
-      return (
-        "Tinkercad simulation link is required."
-      );
-
+      return "Tinkercad simulation link is required.";
     }
 
-
-    if (
-      !isValidTinkercadUrl(
-        trimmedTinkercadUrl
-      )
-    ) {
-
-      return (
-        "Please provide a valid Tinkercad URL."
-      );
-
+    if (!isValidTinkercadUrl(trimmedTinkercadUrl)) {
+      return "Please provide a valid Tinkercad URL.";
     }
-
-
-    // ------------------------------------------
-    // TUTORIALS
-    // ------------------------------------------
 
     if (tutorials.length === 0) {
-
-      return (
-        "At least one tutorial is required."
-      );
-
+      return "At least one tutorial is required.";
     }
 
+    for (let i = 0; i < tutorials.length; i++) {
+      const tutorial = tutorials[i];
 
-    for (
-      let i = 0;
-      i < tutorials.length;
-      i++
-    ) {
-
-      const tutorial =
-        tutorials[i];
-
-      const tutorialTitle =
-        tutorial.title.trim();
-
-      const youtubeUrl =
-        tutorial.youtube_url.trim();
-
+      const tutorialTitle = tutorial.title.trim();
+      const youtubeUrl = tutorial.youtube_url.trim();
 
       if (!tutorialTitle) {
-
-        return (
-          `Tutorial ${i + 1} title is required.`
-        );
-
+        return `Tutorial ${i + 1} title is required.`;
       }
-
 
       if (tutorialTitle.length < 2) {
-
-        return (
-          `Tutorial ${i + 1} title must contain at least 2 characters.`
-        );
-
+        return `Tutorial ${i + 1} title must contain at least 2 characters.`;
       }
-
 
       if (!youtubeUrl) {
-
-        return (
-          `YouTube link for Tutorial ${i + 1} is required.`
-        );
-
+        return `YouTube link for Tutorial ${i + 1} is required.`;
       }
 
-
-      if (
-        !isValidYoutubeUrl(
-          youtubeUrl
-        )
-      ) {
-
-        return (
-          `Please provide a valid YouTube URL for Tutorial ${i + 1}.`
-        );
-
+      if (!isValidYoutubeUrl(youtubeUrl)) {
+        return `Please provide a valid YouTube URL for Tutorial ${i + 1}.`;
       }
-
     }
 
-
     return "";
-
   };
-
 
   // ==========================================
   // SUBMIT FORM
   // ==========================================
 
   const handleSubmit = async (event) => {
-
     event.preventDefault();
-
-
-    // Prevent double submission
 
     if (loading) {
       return;
     }
 
-
     setError("");
 
-
-    // ==========================================
-    // VALIDATE BEFORE API REQUEST
-    // ==========================================
-
-    const validationError =
-      validateForm();
-
+    const validationError = validateForm();
 
     if (validationError) {
-
-      setError(
-        validationError
-      );
-
+      setError(validationError);
       return;
-
     }
-
 
     setLoading(true);
 
-
     try {
+      const cleanName = name.trim();
+      const cleanDescription = description.trim();
+      const cleanTinkercadUrl = tinkercad_url.trim();
 
-      // ========================================
-      // CLEAN DATA
-      // ========================================
+      const cleanTutorials = tutorials.map((tutorial) => ({
+        title: tutorial.title.trim(),
+        youtube_url: tutorial.youtube_url.trim()
+      }));
 
-      const cleanName =
-        name.trim();
-
-      const cleanDescription =
-        description.trim();
-
-      const cleanTinkercadUrl =
-        tinkercad_url.trim();
-
-      const cleanTutorials =
-        tutorials.map((tutorial) => ({
-
-          title:
-            tutorial.title.trim(),
-
-          youtube_url:
-            tutorial.youtube_url.trim()
-
-        }));
-
-
-      // ========================================
-      // CREATE COMPONENT + TUTORIALS
-      // IN ONE TRANSACTION
-      // ========================================
+      // DO NOT CHANGE THIS API CALL
 
       await apiRequest(
         "/components/with-tutorials",
@@ -365,181 +202,169 @@ function AddComponent() {
           method: "POST",
 
           body: JSON.stringify({
-
-            name:
-              cleanName,
-
-            description:
-              cleanDescription,
-
-            tinkercad_url:
-              cleanTinkercadUrl,
-
-            tutorials:
-              cleanTutorials
-
+            name: cleanName,
+            description: cleanDescription,
+            tinkercad_url: cleanTinkercadUrl,
+            tutorials: cleanTutorials
           })
-
         }
       );
 
-
-      // ========================================
-      // SUCCESS
-      // ========================================
-
-      navigate(
-        "/admin/dashboard"
-      );
-
+      navigate("/admin/dashboard");
 
     } catch (error) {
-
       console.error(
         "Failed to create component:",
         error
       );
-
 
       setError(
         error.message ||
         "Failed to create component. Please try again."
       );
 
-
     } finally {
-
       setLoading(false);
-
     }
-
   };
-
 
   // ==========================================
   // UI
   // ==========================================
 
   return (
-
     <div className="add-page">
 
-      {/* ======================================
-          HEADER
-          ====================================== */}
+      {/* SIDEBAR */}
 
-      <header className="simple-header">
+      <Sidebar role="Admin" />
 
-        <Link
-          to="/admin/dashboard"
-          className="brand"
-        >
-          ⚙ HardwareHub
-        </Link>
+      {/* MAIN AREA */}
 
-        <span>
-          Admin
-        </span>
+      <div className="add-main">
 
-      </header>
+        {/* HEADER */}
 
+        <header className="add-header">
 
-      {/* ======================================
-          MAIN CONTENT
-          ====================================== */}
+          <div>
+            <h2>Add Component</h2>
+            <span>
+              Add a new hardware component to HardwareHub
+            </span>
+          </div>
 
-      <main className="add-content">
-
-        <div className="form-card">
-
-          <h1>
-            Add Component
-          </h1>
-
-          <p>
-            Add a hardware component, simulation and its tutorials.
-          </p>
-
-
-          <form
-            onSubmit={handleSubmit}
+          <Link
+            to="/admin/dashboard"
+            className="back-dashboard"
           >
+            ← Dashboard
+          </Link>
 
-            {/* ==================================
-                COMPONENT NAME
-                ================================== */}
+        </header>
 
-            <label>
-              Component Name
-            </label>
+        {/* CONTENT */}
 
-            <input
-              type="text"
-              placeholder="Enter component name"
-              value={name}
-              onChange={(event) =>
-                setName(
-                  event.target.value
-                )
-              }
-              disabled={loading}
-              required
-            />
+        <main className="add-content">
 
+          <div className="add-form-card">
 
-            {/* ==================================
-                DESCRIPTION
-                ================================== */}
+            <div className="form-title">
 
-            <label>
-              Description
-            </label>
+              <div className="form-icon">
+                🔧
+              </div>
 
-            <textarea
-              placeholder="Enter component description"
-              value={description}
-              onChange={(event) =>
-                setDescription(
-                  event.target.value
-                )
-              }
-              disabled={loading}
-            />
+              <div>
+                <h1>Add Component</h1>
 
+                <p>
+                  Add a hardware component, simulation and its tutorials.
+                </p>
+              </div>
 
-            {/* ==================================
-                TINKERCAD
-                ================================== */}
+            </div>
 
-            <label>
-              Tinkercad Simulation
-            </label>
+            <form onSubmit={handleSubmit}>
 
-            <input
-              type="url"
-              placeholder="Paste Tinkercad simulation link"
-              value={tinkercad_url}
-              onChange={(event) =>
-                setTinkercadUrl(
-                  event.target.value
-                )
-              }
-              disabled={loading}
-              required
-            />
+              {/* COMPONENT NAME */}
 
+              <div className="form-group">
 
-            {/* ==================================
-                TUTORIALS
-                ================================== */}
+                <label>
+                  Component Name
+                </label>
 
-            <div className="tutorial-list">
+                <input
+                  type="text"
+                  placeholder="Enter component name"
+                  value={name}
+                  onChange={(event) =>
+                    setName(event.target.value)
+                  }
+                  disabled={loading}
+                  required
+                />
 
-              {tutorials.map(
-                (
-                  tutorial,
-                  index
-                ) => (
+              </div>
+
+              {/* DESCRIPTION */}
+
+              <div className="form-group">
+
+                <label>
+                  Description
+                </label>
+
+                <textarea
+                  placeholder="Enter component description"
+                  value={description}
+                  onChange={(event) =>
+                    setDescription(event.target.value)
+                  }
+                  disabled={loading}
+                />
+
+              </div>
+
+              {/* TINKERCAD */}
+
+              <div className="form-group">
+
+                <label>
+                  Tinkercad Simulation
+                </label>
+
+                <input
+                  type="url"
+                  placeholder="Paste Tinkercad simulation link"
+                  value={tinkercad_url}
+                  onChange={(event) =>
+                    setTinkercadUrl(event.target.value)
+                  }
+                  disabled={loading}
+                  required
+                />
+
+                <small className="input-help">
+                  Add the shared Tinkercad circuit link for this component.
+                </small>
+
+              </div>
+
+              {/* TUTORIALS */}
+
+              <div className="tutorial-section">
+
+                <div className="section-title">
+                  <h3>Tutorials</h3>
+
+                  <span>
+                    Add one or more YouTube tutorials
+                  </span>
+                </div>
+
+                {tutorials.map((tutorial, index) => (
 
                   <div
                     className="tutorial-item"
@@ -552,16 +377,13 @@ function AddComponent() {
                         Tutorial {index + 1}
                       </label>
 
-
                       {tutorials.length > 1 && (
 
                         <button
                           type="button"
                           className="remove-button"
                           onClick={() =>
-                            removeTutorial(
-                              index
-                            )
+                            removeTutorial(index)
                           }
                           disabled={loading}
                         >
@@ -572,15 +394,10 @@ function AddComponent() {
 
                     </div>
 
-
-                    {/* TUTORIAL TITLE */}
-
                     <input
                       type="text"
                       placeholder="Enter tutorial title"
-                      value={
-                        tutorial.title
-                      }
+                      value={tutorial.title}
                       onChange={(event) =>
                         handleTutorialChange(
                           index,
@@ -592,15 +409,10 @@ function AddComponent() {
                       required
                     />
 
-
-                    {/* YOUTUBE URL */}
-
                     <input
                       type="url"
                       placeholder="Paste YouTube tutorial link"
-                      value={
-                        tutorial.youtube_url
-                      }
+                      value={tutorial.youtube_url}
                       onChange={(event) =>
                         handleTutorialChange(
                           index,
@@ -614,74 +426,64 @@ function AddComponent() {
 
                   </div>
 
-                )
+                ))}
+
+                <button
+                  type="button"
+                  className="add-tutorial-button"
+                  onClick={addTutorial}
+                  disabled={loading}
+                >
+                  + Add Another Tutorial
+                </button>
+
+              </div>
+
+              {/* ERROR */}
+
+              {error && (
+                <p className="error-message">
+                  {error}
+                </p>
               )}
 
-            </div>
+              {/* BUTTONS */}
 
+              <div className="form-buttons">
 
-            {/* ==================================
-                ADD TUTORIAL
-                ================================== */}
+                <Link
+                  to="/admin/dashboard"
+                  className="cancel-button"
+                >
+                  Cancel
+                </Link>
 
-            <button
-              type="button"
-              className="add-tutorial-button"
-              onClick={addTutorial}
-              disabled={loading}
-            >
-              + Add Another Tutorial
-            </button>
+                <button
+                  type="submit"
+                  className="save-button"
+                  disabled={loading}
+                >
+                  {loading
+                    ? "Saving..."
+                    : "Save Component"}
+                </button>
 
+              </div>
 
-            {/* ==================================
-                ERROR
-                ================================== */}
+            </form>
 
-            {error && (
+          </div>
 
-              <p className="error-message">
-                {error}
-              </p>
+        </main>
 
-            )}
+        {/* FOOTER */}
 
+        <Footer />
 
-            {/* ==================================
-                FORM BUTTONS
-                ================================== */}
-
-            <div className="form-buttons">
-
-              <Link
-                to="/admin/dashboard"
-                className="cancel-button"
-              >
-                Cancel
-              </Link>
-
-
-              <button
-                type="submit"
-                disabled={loading}
-              >
-                {loading
-                  ? "Saving..."
-                  : "Save Component"}
-              </button>
-
-            </div>
-
-          </form>
-
-        </div>
-
-      </main>
+      </div>
 
     </div>
-
   );
-
 }
 
 export default AddComponent;

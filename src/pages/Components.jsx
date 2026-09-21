@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Components.css";
 import { apiRequest } from "../services/api";
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
+
 
 function Components() {
 
@@ -303,7 +306,7 @@ function Components() {
         )}
 
       </main>
-
+  <Footer />
     </div>
 
   );
