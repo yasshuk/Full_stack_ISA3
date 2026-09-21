@@ -1,0 +1,56 @@
+.scan-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+.scan-page .simple-header a:last-child {
+  color: #1465e8;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.scan-content {
+  display: flex;
+  justify-content: center;
+  padding: 45px 20px;
+}
+
+.scan-card {
+  width: 600px;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+}
+
+.scan-card h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.scan-card > p {
+  color: #71809a;
+  font-size: 12px;
+}
+
+#qr-reader {
+  width: 100%;
+  max-width: 450px;
+  margin: 25px auto;
+}
+
+.scan-note {
+  margin-top: 15px;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 10px;
+  background: #1465e8;
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  font-size: 12px;
+}

@@ -1,0 +1,267 @@
+.edit-page {
+  min-height: 100vh;
+  background: #f7fbff;
+}
+
+.edit-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.edit-form-card {
+  width: 550px;
+  background: white;
+  border: 1px solid #e1ebf5;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.edit-form-card h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.edit-form-card > p {
+  color: #71809a;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.edit-form-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form-card label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.edit-form-card input,
+.edit-form-card textarea {
+  border: 1px solid #d9e4f0;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 18px;
+  outline: none;
+}
+
+.edit-form-card input:focus,
+.edit-form-card textarea:focus {
+  border-color: #1465e8;
+}
+
+.edit-form-card textarea {
+  height: 100px;
+  resize: none;
+}
+
+
+/* ==========================================
+   TUTORIAL LIST
+   ========================================== */
+
+.edit-tutorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 5px;
+}
+
+
+/* ==========================================
+   TUTORIAL CARD
+   ========================================== */
+
+.edit-tutorial-item {
+  border: 1px solid #e1ebf5;
+  border-radius: 7px;
+  padding: 18px;
+  background: #fbfdff;
+}
+
+
+/* ==========================================
+   TUTORIAL HEADER
+   ========================================== */
+
+.edit-tutorial-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.edit-tutorial-heading label {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+
+/* ==========================================
+   REMOVE BUTTON
+   ========================================== */
+
+.edit-remove-button {
+  border: 1px solid #e1bfc2;
+  background: white;
+  color: #c0392b;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.edit-remove-button:hover {
+  background: #fff5f5;
+}
+
+
+/* ==========================================
+   QR SECTION
+   ========================================== */
+
+.edit-tutorial-qr {
+  border-top: 1px solid #e1ebf5;
+  margin-top: 5px;
+  padding-top: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.edit-tutorial-qr label {
+  margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   QR IMAGE
+   ========================================== */
+
+.edit-qr-image {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+
+  border: 1px solid #e1ebf5;
+  border-radius: 5px;
+
+  padding: 8px;
+  background: white;
+
+  margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   DOWNLOAD QR
+   ========================================== */
+
+.edit-download-qr-button {
+  border: 1px solid #cbd8e7;
+  background: white;
+  color: #53657e;
+
+  padding: 8px 12px;
+
+  border-radius: 5px;
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.edit-download-qr-button:hover {
+  background: #f5f9ff;
+}
+
+
+/* ==========================================
+   ADD TUTORIAL
+   ========================================== */
+
+.edit-add-tutorial-button {
+  border: 1px dashed #b8c9df;
+  background: white;
+  color: #1465e8;
+
+  padding: 11px 15px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+  font-size: 12px;
+
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.edit-add-tutorial-button:hover {
+  background: #f5f9ff;
+}
+
+
+/* ==========================================
+   ERROR
+   ========================================== */
+
+.edit-error-message {
+  color: #d93025;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+
+/* ==========================================
+   FORM BUTTONS
+   ========================================== */
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.edit-cancel-button {
+  border: 1px solid #cbd8e7;
+  color: #53657e;
+
+  padding: 11px 18px;
+
+  border-radius: 5px;
+
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.edit-cancel-button:hover {
+  background: #f5f9ff;
+}
+
+.edit-form-buttons button {
+  border: none;
+
+  background: #1465e8;
+  color: white;
+
+  padding: 11px 18px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.edit-form-buttons button:hover {
+  background: #0f58cc;
+}
+
+.edit-form-buttons button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
